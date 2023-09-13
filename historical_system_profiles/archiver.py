@@ -57,6 +57,20 @@ def _archive_profile(data, ptc, logger, notification_service):
     """
     given an event, archive a profile and emit a success message
     """
+    print(ptc)
+    print('---')
+    print(logger)
+    print('---')
+    print(notification_service)
+    print('---')
+    print(data)
+    print('----------------------------')
+
+    if data.value and data.value in ("created", "updated"):
+        print("created/updated")
+        # we need to update system baselines (fetch_baselines)
+        # associated with "mapped systems" (fetch_system_baseline_associations)
+        # with new and updated information (data)
 
     if not data.value or not isinstance(data.value, dict):
         logger.info("skipping message where data.value is empty or not a dict")
